@@ -5,13 +5,12 @@ const add = (a, b) => {
     let c = a % 10 + b % 10;
     return (a == 0 && b == 0) ? 0 : c + add(parseInt(a / 10), parseInt(b / 10)) * (c > 9 ? 100 : 10);
 }
-console.log(add(12, 18)); // 214
+console.log(add(16, 18)); // 214
 
 
 // **********************
 // Testing 1-2-3
 // **********************
-// Write a function which takes a list of strings and returns each line prepended by the correct number.
 const number = array => {
     if (array) {
         return array.map((elem, index) => { return `${index + 1}: ${elem}` });
@@ -23,16 +22,13 @@ console.log(number(["a", "b", "c"])); // ["1: a", "2: b", "3: c"]
 // **********************
 // Word values
 // **********************
-/* Given a string "abc" and assuming that each letter in the string has a value equal to its 
-position in the alphabet, our string will have a value of 1 + 2 + 3 = 6. This means that: 
-a = 1, b = 2, c = 3 ....z = 26.*/
 const wordValue = words => {
     if (!words || words.length == 0) return [];
     let alphabet = "abcdefghijklmnopqrstuvwxyz";
     let groupsOfLetters = words.map(word => word.replace(/\s/g, "").split(""));
     return groupsOfLetters.map((group, index) => (index + 1) * group.reduce((accumulator, letter) => accumulator + alphabet.indexOf(letter) + 1, 0));
 }
-console.log(wordValue(["abc", "abc abc"])); // [6, 24]
+console.log(wordValue(["abc", "abc abc"])); // a:1, b:2, c:3, ...; 1 + 2 + 3 = 6; (6 + 6) * 2 = 24; [6, 24]
 
 
 // **********************
